@@ -1,0 +1,13 @@
+{% extends 'edutest/base.html' %}
+
+{% block style %}<link rel="stylesheet" href="../../static/edutest/css/testing.css">{% endblock %}
+
+{% block title %}Тестування{% endblock %}
+
+{% block content %}
+<form action="">
+    {% for question in data%}
+    <h2>{{ question.question_text }}</h2>
+    {% endfor %}
+</form>
+{% endblock %}

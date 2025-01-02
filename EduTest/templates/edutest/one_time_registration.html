@@ -1,0 +1,36 @@
+{% extends 'edutest/base.html' %}
+
+{% block style %}<link rel="stylesheet" href="../../static/edutest/css/one_time_registration.css">{% endblock %}
+
+{% block title %}Одноразова Регістрація{% endblock %}
+
+{% block content %}
+
+<div class="one_time_registration_form">
+        <p>Введіть дані</p>
+        <form action="/testing" method="post">
+            {% csrf_token %}
+            <div class="name-surname">
+                <div class="input-group">
+                    <label for="name">Ім'я</label>
+                    <input class="input-field" type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="surname">Прізвище</label>
+                    <input class="input-field" type="text" id="surname" name="surname" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="group">Група</label>
+                <input class="input-field" type="text" id="group" name="group" required>
+            </div>
+
+            <div class="submit-container">
+                <input type="hidden" value="{{ title }}" name="title" id="title">
+                <input type="hidden" value="{{ topic_id }}" name="topic_id" id="topic_id">
+                <input class="submit-button" type="submit" value="Вхід">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

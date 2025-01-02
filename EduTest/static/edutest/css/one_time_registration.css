@@ -1,0 +1,121 @@
+.one_time_registration_form {
+    box-shadow: 0 6px 65px 0 #40486F8C;
+    background: #FAFBFF;
+    border-radius: 106px;
+    width: 563px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.one_time_registration_form p {
+    font-family: "Oswald", sans-serif;
+    font-size: 32px;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 50px;
+    color: #40486F;
+}
+
+.name-surname {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.input-field {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 23px;
+    box-shadow: 0 5px 19px 0 #40486F4D;
+
+}
+
+.submit-button {
+    padding: 10px 20px;
+    margin: 30px 0 50px 0;
+    background-color: #40486F;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.one_time_registration_form label {
+    font-family: "Oswald", sans-serif;
+    font-size: 26px;
+    color: #40486F;
+}
+
+.submit-button:hover {
+    background-color: #3EBAFA;
+}
+
+.input-field{
+    background: #F2F4FF;
+}
+
+.submit-button{
+    background: #3EBAFA;
+    box-shadow: 0 0 6px 0 #000000E3;
+    border-radius: 22px;
+    color: #40486F;
+    font-size: 20px;
+
+}
+
+
+@media (max-width: 800px) {
+    .one_time_registration_form {
+        width: 463px;
+    }
+
+    .one_time_registration_form p {
+        padding-top: 30px;
+    }
+
+    .name-surname {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .input-group {
+        width: 100%;
+    }
+}
+
+@media (max-width: 670px) {
+    .one_time_registration_form {
+        width: 363px;
+    }
+}
+
+@media (max-width: 400px) {
+    .one_time_registration_form {
+        width: 280px;
+    }
+    .one_time_registration_form p{
+        font-size: 26px;
+        padding-bottom: 5px;
+    }
+    .one_time_registration_form label{
+        font-size: 20px;
+    }
+    .submit-button {
+        padding-bottom: 5px;
+        margin: 30px 0 25px 0;
+    }
+}

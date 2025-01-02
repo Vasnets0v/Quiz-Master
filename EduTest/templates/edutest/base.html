@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block style %}{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../static/edutest/css/base.css">
+    <script src="https://kit.fontawesome.com/327d5afafa.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <title>{% block title %}{% endblock %} - Quiz Master</title>
+</head>
+<body>
+    <header>
+        <div id="menu">
+            <div id="menu-nav">
+                <div class="menu-elements" id="menu-name">
+                    <a href="/"><span class="title">Fast</span> Knowledge Test</a>
+                </div>
+
+                <div class="menu-right">
+                    <div class="menu-elements" id="menu-table">
+                        <a href="/select_table_score"><i class="fa-solid fa-list-ul"></i></a>
+                    </div>
+                    <div class="menu-elements" id="menu-auth">
+                        <a href="/auth"><i class="fa-regular fa-user"></i></a>
+                    </div>
+                    <div class="menu-elements" id="menu-settings">
+                        <a href="/"><i class="fa-solid fa-gear"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

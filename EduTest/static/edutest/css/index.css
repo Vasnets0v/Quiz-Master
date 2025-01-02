@@ -1,0 +1,109 @@
+.quiz-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px 100px;
+    padding: 20px;
+}
+
+.quiz-card {
+    width: 100%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 9px 39px 0 #40486F42;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.quiz-header {
+    font-size: 20px;
+    font-weight: 300;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background-color: #40486F;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    border: 2px solid #3EBAFA;
+    border-radius: 20px; /* Заокруглення тільки у верхніх кутах */
+}
+
+.quiz-content {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    padding-left: 20px;
+    text-align: left;
+    flex-grow: 1;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.quiz-content p {
+    margin-bottom: 10px;
+}
+
+.status-open {
+    color: #28a745;
+}
+
+.status-close {
+    color: #e55550;
+}
+
+.quiz-footer {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.start-button-open{
+    width: 120px;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    font-size: 20px;
+    font-family: "Oswald", sans-serif;
+    color: white;
+    background: #FF5F57;
+    cursor: pointer;
+}
+
+.start-button-close{
+    width: 120px;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    font-size: 20px;
+    font-family: "Oswald", sans-serif;
+    cursor: not-allowed;
+}
+
+@media (max-width: 1440px) {
+    .quiz-container {
+        gap: 70px;
+    }
+}
+
+@media (max-width: 1366px) {
+    .quiz-container {
+        gap: 50px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .quiz-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .quiz-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+

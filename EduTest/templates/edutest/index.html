@@ -1,0 +1,41 @@
+{% extends 'edutest/base.html' %}
+
+{% block style %}<link rel="stylesheet" href="../../static/edutest/css/index.css">{% endblock %}
+
+{% block title %}Головна{% endblock %}
+
+
+{% block content %}
+<div class="quiz-container">
+    {% for topic in topics%}
+        <div class="quiz-card">
+            <form action="/one_time_registration" method="post">
+                {% csrf_token %}
+                <div class="quiz-header">{{ topic.0 }}</div>
+                <div class="quiz-content">
+                    <p>Час: {{topic.1}} хв</p>
+                    <p>Питань: {{topic.3}}</p>
+                    {% if topic.2 == True %}
+                        <p>Статус: <span class="status-open">Відкрито</span></p>
+                    {% endif %}
+                    {% if topic.2 == False %}
+                        <p>Статус: <span class="status-close">Закрито</span></p>
+                    {% endif %}
+                </div>
+                {% if topic.2 == True %}
+                    <input type="hidden" value="{{ topic.4 }}" name="topic_id" id="topic_id">
+                    <input type="hidden" value="{{ topic.0 }}" name="title" id="title">
+                    <div class="quiz-footer">
+                        <input value="ПОЧАТИ" type="submit" class="start-button-open">
+                    </div>
+                {% endif %}
+                {% if topic.2 == False %}
+                    <div class="quiz-footer">
+                        <input value="ПОЧАТИ" type="submit" class="start-button-close" disabled>
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

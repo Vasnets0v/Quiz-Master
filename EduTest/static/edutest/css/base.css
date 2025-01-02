@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
+#menu {
+    background: #40486F;
+    width: 100%;
+    height: 108px;
+    border-radius: 1px 1px 150px 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+    box-shadow: 0 9px 15px 0 #40486F4D;
+}
+
+#menu-nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#menu-name {
+    margin-right: auto;
+}
+
+.menu-elements {
+    padding-right: 20px;
+}
+
+.menu-right {
+    display: flex;
+    gap: 20px; /* Відстань між правими елементами */
+}
+
+.menu-elements:last-child {
+    padding-right: 0; /* Відсутність відступу у останнього елементу */
+}
+
+.title {
+    color: #FF5F57;
+}
+
+#menu a {
+color: white;
+text-decoration: none;
+font-size: 36px;
+}
+
+#menu a:link {
+color: white;
+text-decoration: none;
+border: none;
+}
+
+#menu a:visited {
+color: white;
+text-decoration: none;
+border: none;
+}
+
+#menu a:hover {
+color: white;
+text-decoration: none;
+border: none;
+}
+
+#menu a:active {
+color: white;
+text-decoration: none;
+border: none;
+}
+
+.wrapper {
+    padding: 50px 100px 0 100px;
+}
+
+
+@media (max-width: 500px) {
+    .wrapper {
+    padding: 30px 5px 0 5px;
+    }
+
+    #menu {
+        padding: 0 50px;
+    }
+}
+
+@media (max-width: 450px) {
+    .wrapper {
+    padding-top: 30px;
+    }
+}

@@ -1,0 +1,15 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
+
+*.xml
+.idea
+.venv
+/QuizMaster.iml

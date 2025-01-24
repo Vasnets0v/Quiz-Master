@@ -8,4 +8,5 @@ urlpatterns = [
     path('testing', testing, name='testing'),
     path('select_table_score', select_table_score, name='select_table_score'),
     path('table_score', table_score, name='table_score'),
+    path('calculate_result/', calculate_result, name='calculate_result'),
 ]

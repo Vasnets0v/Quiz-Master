@@ -5,9 +5,36 @@
 {% block title %}Тестування{% endblock %}
 
 {% block content %}
-<form action="">
-    {% for question in data%}
-    <h2>{{ question.question_text }}</h2>
+{% load static %}
+<form action="{% url 'calculate_result' %}" method="post">
+    {% csrf_token %}
+    {% for question in data %}
+        <div id="question_{{ question.question_id }}">
+            <h2>{{ question.question_text }}</h2>
+            {% if question.img_ref %}
+                <p><img src="{% static 'edutest/images/' %}{{ question.img_ref }}" alt="Image related to question: {{ question.question_text }}"></p>
+            {% endif %}
+            <div class="answers">
+                {% for answer in question.answers %}
+                    <p>
+                        <input 
+                        type="radio" 
+                        id="{{answer.ans_id}}" 
+                        name="question_{{ question.question_id }}"
+                        value="{{ answer.ans_id }}">
+                        <label for="{{answer.ans_id}}">{{ answer.ans_text }}</label>
+                    </p>
+                    {% if answer.img_ref %}
+                        <p><img src="{% static 'edutest/images/' %}{{answer.img_ref}}" alt="Image related to answer: {{ answer.ans_text }}"></p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
     {% endfor %}
+    <input type="hidden" value="{{ topic_id }}" name="topic_id" id="topic_id">
+    <input type="hidden" value="{{ name }}" name="name" id="name">
+    <input type="hidden" value="{{ surname }}" name="surname" id="surname">
+    <input type="hidden" value="{{ group }}" name="group" id="group">
+    <input type="submit" value="Завершити" class="finish-button">
 </form>
 {% endblock %}

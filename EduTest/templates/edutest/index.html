@@ -7,31 +7,32 @@
 
 {% block content %}
 <div class="quiz-container">
-    {% for topic in topics%}
+    {% for topic in topics %}
         <div class="quiz-card">
             <form action="/one_time_registration" method="post">
                 {% csrf_token %}
-                <div class="quiz-header">{{ topic.0 }}</div>
+                <div class="quiz-header">{{ topic.title }}</div>
                 <div class="quiz-content">
-                    <p>Час: {{topic.1}} хв</p>
-                    <p>Питань: {{topic.3}}</p>
-                    {% if topic.2 == True %}
+                    <p>Час: {{topic.time_to_pass}} хв</p>
+                    <p>Питань: {{topic.question_in_test}}</p>
+                    {% if topic.is_open == True %}
                         <p>Статус: <span class="status-open">Відкрито</span></p>
                     {% endif %}
-                    {% if topic.2 == False %}
+                    {% if topic.is_open == False %}
                         <p>Статус: <span class="status-close">Закрито</span></p>
                     {% endif %}
                 </div>
-                {% if topic.2 == True %}
-                    <input type="hidden" value="{{ topic.4 }}" name="topic_id" id="topic_id">
-                    <input type="hidden" value="{{ topic.0 }}" name="title" id="title">
+                {% if topic.is_open == True %}
+                    <input type="hidden" value="{{ topic.topic_id }}" name="topic_id" id="topic_id">
+                    <input type="hidden" value="{{ topic.title }}" name="title" id="title">
                     <div class="quiz-footer">
                         <input value="ПОЧАТИ" type="submit" class="start-button-open">
                     </div>
                 {% endif %}
-                {% if topic.2 == False %}
+                {% if topic.is_open == False %}
                     <div class="quiz-footer">
                         <input value="ПОЧАТИ" type="submit" class="start-button-close" disabled>
+                        <input type="hidden" value="0" name="topic_id" id="topic_id">
                     </div>
                 {% endif %}
             </form>

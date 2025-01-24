@@ -2,6 +2,26 @@ from django.core.cache import cache
 from .models import Topic, Question, Answer
 import json
 import logging
+from random import sample
+
+
+def put_correct_answer_ids_to_cache(topic_id):
+    """
+    Зберігає ID правильних відповідей у кеш для заданої теми.
+    """
+    # Отримуємо ID правильних відповідей для питань цієї теми
+    correct_answers_id = list(
+        Answer.objects.filter(
+            question_id__topic_id=topic_id,
+            is_correct=True
+        ).values_list('id', flat=True)
+    )
+
+    # Зберігаємо список у кеш з ключем, специфічним для теми
+    data_to_json = json.dumps(correct_answers_id)
+    cache.set(f'correct_answer_{topic_id}', data_to_json, timeout=1800)
+
+    return correct_answers_id
 
 
 def put_topic_questions_and_answers_to_cache(topic_id):
@@ -74,7 +94,8 @@ def put_topic_data_to_cache():
             words = title.split('_')
             converted_title = ' '.join(word.capitalize() for word in words)
 
-            topics.append([converted_title, time_in_minutes, is_open, question_in_test, topic_id])
+            topics.append({'title': converted_title, 'time_to_pass': time_in_minutes, 'is_open': is_open,
+                           'question_in_test': question_in_test, 'topic_id': topic_id})
 
         # Перетворимо дані в JSON та збережемо їх в кеш з часом життя 300 секунд
         topics_to_json = json.dumps(topics)
@@ -85,3 +106,26 @@ def put_topic_data_to_cache():
     except Exception as e:
         logging.error(f"Error entering topic data: {e}")
         return []
+
+
+def get_random_questions(topic_id, need_questions):
+    """
+    Випадково обирає задану кількість питань для відповідної теми з кешу.
+    Також перемішує відповіді в кожному питанні.
+    """
+    # Отримуємо дані з кешу або завантажуємо їх
+    data = get_content_from_cache(f'data_topic_{topic_id}')
+    if data is None:
+        data = put_topic_questions_and_answers_to_cache(topic_id)
+
+    # Перевіряємо, чи достатньо питань для вибірки
+    num_of_questions = len(data)
+    if need_questions > num_of_questions:
+        raise ValueError(f"Requested {need_questions} questions, but only {num_of_questions} are available.")
+
+    # Обираємо випадкові питання та перемішуємо відповіді
+    selected_questions = sample(data, need_questions)
+    for question in selected_questions:
+        question['answers'] = sample(question['answers'], len(question['answers']))
+
+    return selected_questions

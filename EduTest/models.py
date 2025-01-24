@@ -34,7 +34,7 @@ class Topic(models.Model):
 class Question(models.Model):
     topic_id = models.ForeignKey(Topic, on_delete=models.CASCADE)
     question_text = models.CharField(max_length=256)
-    img_ref = models.ImageField(upload_to='img/question/%Y/%m/%d/')
+    img_ref = models.ImageField(upload_to='images/question/%Y/%m/%d/')
 
     def __str__(self):
         return f'{self.topic_id} {self.question_text} {self.img_ref}'
@@ -43,7 +43,7 @@ class Question(models.Model):
 class Answer(models.Model):
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer_text = models.CharField(max_length=256)
-    img_ref = models.ImageField(upload_to='img/answer/%Y/%m/%d/')
+    img_ref = models.ImageField(upload_to='images/answer/%Y/%m/%d/')
     is_correct = models.BooleanField(default=False)
 
     def __str__(self):

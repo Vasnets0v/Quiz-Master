@@ -1,0 +1,11 @@
+.finish-button{
+    width: 120px;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    font-size: 20px;
+    font-family: "Oswald", sans-serif;
+    color: white;
+    background: #FF5F57;
+    cursor: pointer;
+}

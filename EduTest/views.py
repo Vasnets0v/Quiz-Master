@@ -3,7 +3,6 @@ from django.http import HttpResponseNotFound
 import logging
 from .models import UserProfile, Result
 from .services import put_topic_data_to_cache, get_content_from_cache, get_random_questions, put_correct_answer_ids_to_cache
-from time import strftime
 
 
 def index(request):
@@ -126,11 +125,32 @@ def calculate_result(request):
 
 
 def select_table_score(request):
-    return render(request, 'EduTest/select_table_score.html')
+    topics = get_content_from_cache('topics')
+
+    if topics is None:
+        topics = put_topic_data_to_cache()
+    return render(request, 'EduTest/select_table_score.html', {'topics': topics})
 
 
 def table_score(request):
-    return render(request, 'EduTest/table_score.html')
+    if request.method == 'POST':
+        selected_topic_id = request.POST.get('topics')
+
+        results = Result.objects.filter(topic_id=selected_topic_id).select_related('user_id')
+
+        students = [
+            {
+                'name': f"{result.user_id.first_name} {result.user_id.last_name}",
+                'group': result.user_id.group_name,
+                'score': result.score,
+                'time': result.passed_at.strftime("%Y-%m-%d %H:%M")
+            } for result in results
+        ]
+
+        return render(request, 'EduTest/table_score.html', {'students': students})
+
+    else:
+        return redirect('/')
 
 
 def page_not_found(request, exception):

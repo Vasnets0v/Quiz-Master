@@ -6,4 +6,23 @@
 
 {% block content %}
 
+<div class="table_score">
+	<table>
+		<tr>
+			<th>Ім'я та Прізвище</th>
+			<th>Група</th>
+			<th>Результат</th>
+			<th>Час Проходження</th>
+		</tr>
+			{% for student in students %}
+			<tr>
+				<th>{{ student.name }}</th>
+				<th>{{ student.group }}</th>
+				<th>{{ student.score }}</th>
+				<th>{{ student.time }}</th>
+			</tr>
+		{% endfor %}
+	</table>
+</div>
+
 {% endblock %}

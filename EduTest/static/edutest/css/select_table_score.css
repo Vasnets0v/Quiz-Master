@@ -1,0 +1,117 @@
+.select_table_score {
+    box-shadow: 0 6px 65px 0 #40486F8C;
+    background: #FAFBFF;
+    border-radius: 80px;
+    width: 80%;
+    max-width: 563px;
+    margin: 100px auto;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.select_table_score p {
+    font-family: "Oswald", sans-serif;
+    font-size: 28px;
+    color: #40486F;
+    margin-bottom: 25px;
+    margin-top: 50px;
+}
+
+.topics {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.topics select {
+    border: none;
+    width: 100%;
+    max-width: 400px;
+    padding: 5px;
+    border-radius: 23px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    background: white;
+    text-align: center;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 19px 0 #40486F4D;
+}
+
+/* Кнопка */
+.submit-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    background-color: #40486F;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    font-size: 18px;
+}
+
+.submit-button:hover {
+    background-color: #2d3552;
+}
+
+@media (max-width: 800px) {
+    .select_table_score {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .select_table_score p {
+        font-size: 24px;
+    }
+
+    .topics select {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 670px) {
+    .select_table_score {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .select_table_score p {
+        font-size: 20px;
+    }
+
+    .topics select {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 400px) {
+    .select_table_score {
+        width: 100%;
+        padding: 10px;
+        border-radius: 50px;
+    }
+
+    .select_table_score p {
+        font-size: 18px;
+    }
+
+    .topics select {
+        max-width: 250px;
+    }
+
+    .submit-button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}

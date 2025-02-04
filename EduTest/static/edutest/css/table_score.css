@@ -1,0 +1,68 @@
+.table_score {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 6px 65px 0 #40486F8C;
+    background: #FAFBFF;
+    border-radius: 20px;
+    overflow-x: auto; /* Додає горизонтальний скрол для малих екранів */
+}
+
+.table_score table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.table_score th, .table_score td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    font-size: 18px;
+}
+
+.table_score th {
+    background: #40486F;
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 800px) {
+    .table_score {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .table_score th, .table_score td {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 670px) {
+    .table_score {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .table_score th, .table_score td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .table_score {
+        width: 100%;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    .table_score table {
+        font-size: 12px;
+    }
+
+    .table_score th, .table_score td {
+        padding: 5px;
+    }
+}
